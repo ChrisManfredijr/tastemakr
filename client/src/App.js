@@ -1,5 +1,6 @@
-import Header from "./components/header"
-import Home from './pages/home'
+import Header from "./components/Header"
+import Home from './pages/Home'
+import Results from './pages/Results';
 import './App.css';
 
 
