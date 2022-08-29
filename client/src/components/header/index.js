@@ -5,11 +5,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {BsHeadphones} from 'react-icons/bs'
 function Header() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="xxl" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand href="/"><BsHeadphones/></Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
+        
+        
           <Nav className="me-auto">
             
           </Nav>
@@ -23,7 +23,7 @@ function Header() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
-        </Navbar.Collapse>
+        
       </Container>
     </Navbar>
   );

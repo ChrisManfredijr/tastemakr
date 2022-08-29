@@ -22,8 +22,11 @@ function Home() {
         
         <div className="homePage" style={{ display: "flex" }}>
             <div className='TitleWrapper'>
-                <h3>Tastemakr</h3>
-                <InputGroup className="mb-3">
+              
+                <h1 className='Title'>Tastemakr <BsHeadphones/></h1>
+                <h6 className='subTitle'>New music choices made easy</h6>
+
+                <InputGroup className="searchArtist mb-3">
                     <Form.Control
                         ref={inputRef}
                         placeholder="enter an artist"
