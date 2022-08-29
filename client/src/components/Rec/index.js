@@ -1,15 +1,22 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { BsStar, BsFillArrowUpRightSquareFill as ArrowLink} from 'react-icons/bs'
+import { BsHeadphones, BsStar, BsFillArrowUpRightSquareFill as ArrowLink} from 'react-icons/bs'
 
-const Rec = ({results, loading}) =>{
+const Rec = ({results, artistName, loading}) =>{
   if(loading){
-    return  (<h2>Loading</h2>);
+    return  (
+    <div className='loadingPage'>
+          <div>
+            <BsHeadphones/>
+          </div>
+        <h2>Loading your recomendations...</h2>
+    
+    </div>
+    );
   }else{
     return (
       results.map((result, index) => (
-        <Card style={{width: "300px"}} key={index}>
-        <Card.Img src={require("../../assets/test.jpg")} style={{height: "300px", width: "300px"}} />
+        <Card key={index} className="resultCard">
         <Card.Body>
           <Card.Title>{result.resultIndex}. {result.name}</Card.Title>
           <Card.Text>
@@ -19,7 +26,6 @@ const Rec = ({results, loading}) =>{
           <ArrowLink/>
         </Card.Body>
       </Card>
-  
       ))
       
     )

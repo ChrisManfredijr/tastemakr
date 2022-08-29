@@ -18,8 +18,6 @@ function Home() {
     }
 
     return (
-        
-        
         <div className="homePage" style={{ display: "flex" }}>
             <div className='TitleWrapper'>
               

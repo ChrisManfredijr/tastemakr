@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import {BsHeadphones} from 'react-icons/bs'
 function Header() {
   return (
-    <Navbar collapseOnSelect expand="xxl" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="xxl" bg="dark" variant="dark" style={{margin:"0px"}}>
       <Container>
         <Navbar.Brand href="/"><BsHeadphones/></Navbar.Brand>
         

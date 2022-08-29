@@ -7,7 +7,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { BsSearch, BsHeadphones } from 'react-icons/bs'
 import {useLocation} from 'react-router-dom';
 const fmKey = "2097d3a5f8da51f146d0e4e47efde651";
-const bearer =   "Bearer " + "BQBY0HcwSKdNo9ClfuM5jGqBialsUfRGsy09NS4e_lLQQKR7guKN4OryZ6fRexscgiFS4Cb5XKCTt5NnAlFZzefzG-F0m5amJWZPqCBAiPpDAVVJOmZ9O5St7srYbmoNCMbV575FAE6wwHpgSE0ekZALQE7ES7eKQbtTgUDDwnSGXIKH__b5A8zZFbFhIL-joKwHAHKqJVArmsaD5Bc0F2li-VzJkBWOH3YAWECb4HAi1gPTSk_HbtU5KC6GVRuXWahZPlvDMPqK7yKrdWwB6Xes-aUsk92D2AhZd8MuxI3OTPonlRD665Yddr4_3lmY_y2lWc--4mxA8g";
 
 
 function Results() {
@@ -21,9 +20,10 @@ function Results() {
 
     useEffect(() => {
         const fetchResults = async (artist) => {
-            setLoading(true);
+            
             fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
             .then((response) => {
+                setLoading(true)
                 return response.json();
             })
             .then(async (data) => {
@@ -33,10 +33,7 @@ function Results() {
                     
                     const artistData = await res.json();
                     const artistRecName = artistData.artist.name;
-                    const artistMBID = artistData.artist.mbid;
-                    console.log(artistMBID);
-
-                    
+            
                     //splits up bio
                     const artistBioLong = artistData.artist.bio.content;
                     const artistBioArray = artistBioLong.split(".");
@@ -57,13 +54,14 @@ function Results() {
                     }
 
                     artistArray.push(artistObject);
-                    console.log(artistObject)
+                    console.log(loading);
                 }
-            
+                setLoading(false)
                 return artistArray;
+                
             })
             .then(data => setResults(data))
-            .then(setLoading(false))
+            
         }
         fetchResults(artistName);
     }, []);
@@ -79,9 +77,13 @@ function Results() {
 
   
     return (
-        <div className="resultsPage" style={{ width: "75%", display:"flex" }}>
-            <div style={{justifyContent:"center"}}>
-                <InputGroup className="mb-3">
+        <div className="resultsPage">
+            <div className='resultsTitleWrapper'>
+                <h1 className='resultsTitle'>Tastemakr</h1>
+            </div>
+            
+            <section className="searchOnResult">
+                <InputGroup className="searchOnResult">
                     <Form.Control
                         ref={inputRef}
                         placeholder="search again"
@@ -92,12 +94,12 @@ function Results() {
                         <BsSearch />
                     </Button>
                 </InputGroup>
-                <h3>If you like {artistName} then you probably like</h3>
-                <div style={{display:"flex"}}>
-                    <Rec results={currentResults} loading={loading}/>
+            </section>
+                <h3 className='resultsIntro'>If you like {artistName} then you'll probably enjoy</h3>
+                <div>
+                    <Rec results={currentResults} artistName = {artistName}loading={loading}/>
                 </div>     
-                <Pagination resultsPerPage={resultsPerPage} totalResults={25} paginate={paginate}/>
-            </div>
+                <Pagination resultsPerPage={resultsPerPage} totalResults={25} paginate={paginate} className="pagination"/>
         </div>
 
     )
