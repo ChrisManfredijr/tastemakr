@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema} = require('mongoose');
 
 
 const tasteSchema = new Schema(
@@ -24,6 +24,6 @@ const tasteSchema = new Schema(
 );
 
 
-const Taste = model('Taste', tasteSchema);
 
-module.exports = Taste;
+
+module.exports = tasteSchema;

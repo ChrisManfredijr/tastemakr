@@ -23,12 +23,12 @@ const userSchema = new Schema(
       minlength: 8
     },
 
-    tastes: [tasteSchema]
+    tastes: [tasteSchema],
   },
   {
     toJSON: {
       virtuals: true
-    }
+    },
   }
 );
 
