@@ -5,18 +5,23 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { BsSearch, BsHeadphones } from 'react-icons/bs'
+import {Navigate, useNavigate} from "react-router-dom";
 import {useLocation} from 'react-router-dom';
 const fmKey = "2097d3a5f8da51f146d0e4e47efde651";
 
 
 function Results() {
     const inputRef = useRef(null);
-    const {state} =useLocation();
+    const {state} = useLocation() || " ";
     const {artistName} = state;
+    
     const [results, setResults] =useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const navigate = useNavigate();
     const [resultsPerPage] = useState(5);
+  
+    
 
     useEffect(() => {
         const fetchResults = async (artist) => {
@@ -33,7 +38,7 @@ function Results() {
                     
                     const artistData = await res.json();
                     const artistRecName = artistData.artist.name;
-            
+                    
                     //splits up bio
                     const artistBioLong = artistData.artist.bio.content;
                     const artistBioArray = artistBioLong.split(".");
@@ -41,32 +46,86 @@ function Results() {
                     //gets link to lastfm
                     const link = artistData.artist.url;
 
-                    //on tour?
-                    const onTour = artistData.artist.onTour;
-
+                    //fetch image from audioDB
+                    const res2 = await fetch("https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistRecName,{});
+                    const artistImage = await res2.json();
+                    const imageLink = artistImage.artists[0].strArtistThumb
+                    
                     const artistObject = {
                         name: artistRecName,
                         bio: artistBio,
                         link: link,
-                        onTour: onTour,
+                        image: imageLink,
                         resultIndex: i+1,
 
                     }
 
                     artistArray.push(artistObject);
-                    console.log(loading);
+                    
                 }
                 setLoading(false)
                 return artistArray;
                 
             })
             .then(data => setResults(data))
+            .catch(err => console.log(err));
             
         }
         fetchResults(artistName);
     }, []);
 
-  
+    //fix duplicated fetch calls using state
+    function handleClick() {
+        const artist = inputRef.current.value;
+        navigate('/results', {state: {artistName: artist}})
+        fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
+            .then((response) => {
+                setLoading(true)
+                return response.json();
+            })
+            .then(async (data) => {
+                const artistArray = [];
+                for(var i=0; i < 25; i++){
+                    const res = await fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+data.similarartists.artist[i].name+'&api_key='+fmKey+'&format=json', {});
+                    
+                    const artistData = await res.json();
+                    const artistRecName = artistData.artist.name;
+                    
+                    //splits up bio
+                    const artistBioLong = artistData.artist.bio.content;
+                    const artistBioArray = artistBioLong.split(".");
+                    const artistBio = artistBioArray[0] + "." + artistBioArray[1] + "." + artistBioArray[2] + "." + artistBioArray[3] + ".";
+                    //gets link to lastfm
+                    const link = artistData.artist.url;
+
+                    //fetch image from audioDB
+                    const res2 = await fetch("https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistRecName,{})
+
+                    const artistImage = await res2.json();
+
+
+                    const imageLink = artistImage.artists[0].strArtistThumb
+                    
+                    const artistObject = {
+                        name: artistRecName,
+                        bio: artistBio,
+                        link: link,
+                        image: imageLink,
+                        resultIndex: i+1,
+
+                    }
+
+                    artistArray.push(artistObject);
+                    
+                }
+                setLoading(false)
+                return artistArray;
+                
+            })
+            .then(data => setResults(data))
+            .catch(err => console.log(err));
+        
+    }
     //get Current post 
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage;
@@ -75,7 +134,8 @@ function Results() {
     //Change page 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  
+    //change state
+    
     return (
         <div className="resultsPage">
             <div className='resultsTitleWrapper'>
@@ -90,7 +150,7 @@ function Results() {
                         aria-label="search again"
                         aria-describedby="basic-addon2"
                     />
-                    <Button variant="outline-secondary" id="button-addon2">
+                    <Button variant="outline-secondary" id="Search-button button-addon2" onClick= {handleClick}>
                         <BsSearch />
                     </Button>
                 </InputGroup>
