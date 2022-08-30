@@ -93,6 +93,8 @@ function Results() {
                     const artistData = await res.json();
                     const artistRecName = artistData.artist.name;
                     
+                    const mbid = artistData.artist.mbid;
+
                     //splits up bio
                     const artistBioLong = artistData.artist.bio.content;
                     const artistBioArray = artistBioLong.split(".");
@@ -113,10 +115,12 @@ function Results() {
                         bio: artistBio,
                         link: link,
                         image: imageLink,
+                        mbid: mbid,
                         resultIndex: i+1,
 
                     }
-
+                    console.log(artistObject);
+                    
                     artistArray.push(artistObject);
                     
                 }
