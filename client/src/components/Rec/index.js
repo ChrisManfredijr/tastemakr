@@ -17,13 +17,13 @@ const Rec = ({ results, loading }) => {
   } else {
     return (
       results.map((result, index) => (
-        <Card key={index} className="resultCard">
+        <Card key={index} className="resultCard" >
           <Card.Body className='resultBody'>
             
-            <div className="artistImageWrapper">
+            <div className='artistImageWrapper'>
               <img src={result.image} className="artistImage" alt={result.name}></img>
             </div>
-
+              
             <div className='artistBioWrapper'>
               <Card.Title>{result.resultIndex}. {result.name}</Card.Title>
               <Card.Text>

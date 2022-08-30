@@ -12,7 +12,8 @@ const fmKey = "2097d3a5f8da51f146d0e4e47efde651";
 
 function Results() {
     const inputRef = useRef(null);
-    const {state} = useLocation() || " ";
+    const {state} = useLocation();
+    
     const {artistName} = state;
     
     const [results, setResults] =useState([]);
@@ -76,6 +77,7 @@ function Results() {
 
     //fix duplicated fetch calls using state
     function handleClick() {
+        
         const artist = inputRef.current.value;
         navigate('/results', {state: {artistName: artist}})
         fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
@@ -149,6 +151,7 @@ function Results() {
                         placeholder="search again"
                         aria-label="search again"
                         aria-describedby="basic-addon2"
+                        
                     />
                     <Button variant="outline-secondary" id="Search-button button-addon2" onClick= {handleClick}>
                         <BsSearch />

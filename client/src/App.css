@@ -9,7 +9,9 @@ html {
 }
 
 
-
+.navLogo {
+  font-size:50px;
+}
 /*home page */
 
 .homePage {
@@ -55,7 +57,7 @@ html {
 .resultCard {
   width:75%;
   margin: 10px auto;
-
+  
 }
 .searchOnResult {
   width:75%;
@@ -107,11 +109,24 @@ html {
   color:red;
 }
 .artistImage {
-  height:200px
+  height:300px;
+  border-radius: 5px;
 }
 
 .resultBody {
   display: flex;
+  justify-content: space-around;
+}
+
+.artistBioWrapper {
+  width:70%;
+  padding-left: 10px;
+  text-align: left;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+
 }
 /*loading*/
 .loadingPage {
@@ -127,7 +142,7 @@ html {
   width:100%;
   border: 16px solid white; /* Light grey */
   border-top: 16px solid red;
-  border-bottom: 16px solid red; 
+  border-bottom: 16px solid black; 
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -146,12 +161,7 @@ html {
   width: 0px;
 }
 
-.artistImageWrapper {
-  width:30%;
-}
-.artistBioWrapper {
-  width:60%;
-}
+
 
 @keyframes ellipsis {
   to {
@@ -172,8 +182,27 @@ html {
   100% { transform: rotate(360deg); }
 }
 
+@media only screen and (max-width: 1150px) {
+  .resultBody {
+    display:flex;
+    flex-direction: column;
+  }
+
+  .artistBioWrapper{
+    padding-top:10px;
+    text-align: center;
+    width: 100%;
+  }
+}
 @media only screen and (max-width: 710px) {
   .Title {
     font-size:50px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .artistImage {
+    height:200px;
+   
   }
 }
