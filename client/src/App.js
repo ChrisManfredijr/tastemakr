@@ -2,23 +2,38 @@ import Header from "./components/Header"
 import Home from './pages/Home'
 import Results from './pages/Results';
 import Error from './pages/Error';
+import Tastes from './pages/Tastes';
 
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import './App.css';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <div className="App">
+    <ApolloProvider client={client}>
+      <div className="App">
       <Router>
         <Header/>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/results" element={<Results/>}/> 
+          
           <Route path="*" element={<Error/>}/>
         </Routes>  
       </Router>
     </div>
+    </ApolloProvider>
+    
+
   );
 }
 
