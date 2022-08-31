@@ -1,33 +1,31 @@
 
 export const getSavedTasteIds = () => {
-    const savedTasteIds = localStorage.getItem('saved_tastes')
-      ? JSON.parse(localStorage.getItem('saved_tastes'))
+    const savedTasteIds = localStorage.getItem('saved_taste')
+      ? JSON.parse(localStorage.getItem('saved_taste'))
       : [];
   
     return savedTasteIds;
   };
   
-  export const saveTasteIds = (tasteIdArr) => {
-    if (tasteIdArr.length) {
-      localStorage.setItem('saved_tastes', JSON.stringify(tasteIdArr));
+  export const saveTasteIds = (artistId) => {
+    if (artistId.length) {
+      localStorage.setItem('saved_tastes', JSON.stringify(artistId));
     } else {
       localStorage.removeItem('saved_tastes');
     }
   };
   
   export const removeTasteId = (tasteId) => {
-    const savedTasteIds = localStorage.getItem('saved_tastes')
-      ? JSON.parse(localStorage.getItem('saved_tates'))
+    const savedTasteIds = localStorage.getItem('saved_taste')
+      ? JSON.parse(localStorage.getItem('saved_tate'))
       : null;
   
     if (!savedTasteIds) {
       return false;
     }
   
-    const updatedSavedTasteIds = savedTasteIds?.filter((savedTasteId) => 
-    //check var name
-    savedTasteId !== tasteId);
-    localStorage.setItem('saved_tastes', JSON.stringify(updatedSavedTasteIds));
+    const updatedSavedTasteIds = savedTasteIds?.filter((savedTasteId) => savedTasteId !== tasteId);
+    localStorage.setItem('saved_taste', JSON.stringify(updatedSavedTasteIds));
   
     return true;
   };

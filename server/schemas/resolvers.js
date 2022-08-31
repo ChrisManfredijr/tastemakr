@@ -10,8 +10,10 @@ const resolvers = {
                 .select('-__v -password')
                 .populate('tastes')
                 return userData;
+            }else{
+                throw new AuthenticationError('Not logged in');
             }
-            throw new AuthenticationError('Not logged in');
+           
         }
     },
     Mutation: {
@@ -24,25 +26,28 @@ const resolvers = {
         login: async (parent, { email, password }) => {
             const user = await User.findOne( { email });
             if (!user) {
-                throw new AuthenticationError('Incorrect credentials')
+                throw new AuthenticationError('Incorrect Username!')
             }
             const correctPw = await user.isCorrectPassword(password);
+           
             if(!correctPw) {
-                throw new AuthenticationError('Incorrect credentials')
+                throw new AuthenticationError('Incorrect Password')
             }
             const token = signToken(user);
             return { token, user };
         },
-        saveTaste: async (parent, { taste }, context) => {
+        saveTaste: async (parent, { input }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: {tastes: taste} },
+                    { $addToSet: {tastes: input} },
                     { new: true }
                 ).populate('tastes')
                 return updatedUser;
+            }else { 
+                 //throw new AuthenticationError('You need to be logged in!!!')
             }
-            throw new AuthenticationError('You need to be logged in!')
+           
         },
         removeTaste: async (parent, { artistId }, context) => {
             if (context.user) {

@@ -5,7 +5,6 @@ const tasteSchema = new Schema(
   {
     artist: {
       type:String,
-      required: true,
     },
     bio: {
       type:String,

@@ -26,7 +26,6 @@ const LoginForm = () => {
     }
 
     try {
-      // execute login mutation
       const { data } = await login({
         variables: {...userFormData}
       });
@@ -46,7 +45,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="signup">
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
@@ -60,7 +59,7 @@ const LoginForm = () => {
             value={userFormData.email}
             required
           />
-          <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>Email required</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group>
@@ -73,12 +72,14 @@ const LoginForm = () => {
             value={userFormData.password}
             required
           />
-          <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>Password required</Form.Control.Feedback>
         </Form.Group>
+
         <Button
+          className='submitAuth'
           disabled={!(userFormData.email && userFormData.password)}
           type='submit'
-          variant='success'>
+          variant='dark'>
           Submit
         </Button>
       </Form>

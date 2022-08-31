@@ -42,7 +42,7 @@ export const SAVE_TASTE = gql`
   }
 `;
 
-export const REMOVE_BOOK = gql`
+export const REMOVE_TASTE = gql`
   mutation Mutation($artistId: ID!) {
     removeTaste(artistId: $artistId) {
       _id

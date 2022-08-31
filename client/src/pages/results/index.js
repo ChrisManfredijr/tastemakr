@@ -39,7 +39,7 @@ function Results() {
                     
                     const artistData = await res.json();
                     const artistRecName = artistData.artist.name;
-                    
+                    const mbid = artistData.artist.mbid;
                     //splits up bio
                     const artistBioLong = artistData.artist.bio.content;
                     const artistBioArray = artistBioLong.split(".");
@@ -53,11 +53,12 @@ function Results() {
                     const imageLink = artistImage.artists[0].strArtistThumb
                     
                     const artistObject = {
-                        name: artistRecName,
+                        artist: artistRecName,
                         bio: artistBio,
                         link: link,
                         image: imageLink,
-                        resultIndex: i+1,
+                        artistId: mbid,
+                        
 
                     }
 
@@ -111,11 +112,11 @@ function Results() {
                     const imageLink = artistImage.artists[0].strArtistThumb
                     
                     const artistObject = {
-                        name: artistRecName,
+                        artist: artistRecName,
                         bio: artistBio,
                         link: link,
                         image: imageLink,
-                        mbid: mbid,
+                        artistId: mbid,
                         resultIndex: i+1,
 
                     }

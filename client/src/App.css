@@ -118,6 +118,9 @@ html {
   justify-content: space-around;
 }
 
+.saveBtn {
+  padding:10px;
+}
 .artistBioWrapper {
   width:70%;
   padding-left: 10px;
@@ -127,6 +130,11 @@ html {
   justify-content: space-between;
   
 
+}
+.cardLinks {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
 }
 /*loading*/
 .loadingPage {
@@ -160,8 +168,40 @@ html {
   content: "\2026"; /* ascii code for the ellipsis character */
   width: 0px;
 }
+.accountPic {
+  width:100%;
+  font-size: 200px;
+}
+.login {
+  color:black !important;
+  
+  
+}
+
+.signup {
+  color:black !important;
+}
 
 
+.modal-select {
+  align-items: center;
+}
+.modal-header {
+  display: flex;
+  flex-wrap: wrap;
+}
+.nav-item {
+  color:red;
+  text-decoration: none;
+}
+.submitAuth {
+  margin-left:90%;
+  margin-top: 20px;
+ 
+}
+.login > .nav-link:active {
+  background-color: red;
+}
 
 @keyframes ellipsis {
   to {

@@ -23,12 +23,8 @@ const typeDefs = gql`
         me: User
     }
 
-    type Auth {
-        token: ID!
-        user: User
-    }
-
-    input SavedTasteInput {
+   
+    input tasteData {
         artist: String
         bio: String
         link: String
@@ -36,13 +32,19 @@ const typeDefs = gql`
         artistId: String
 
     }
+    type Auth {
+        token: ID!
+        user: User
+    }
 
     type Mutation {
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
-        saveTaste(input: SavedTasteInput): User
-        removeTaste(artistId: String!): User
-}
+        saveTaste(input: tasteData!): User
+        removeTaste(artistId: ID!): User
+    }
+     
+
 `;
 
 // export the typeDefs
