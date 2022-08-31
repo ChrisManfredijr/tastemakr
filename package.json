@@ -22,5 +22,8 @@
   "homepage": "https://github.com/ChrisManfredijr/tastemakr#readme",
   "devDependencies": {
     "concurrently": "^7.3.0"
+  },
+  "dependencies": {
+    "react-bootstrap": "^2.5.0"
   }
 }

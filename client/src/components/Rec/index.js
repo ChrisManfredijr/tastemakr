@@ -1,8 +1,22 @@
+import { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { BsHeadphones, BsStar, BsFillArrowUpRightSquareFill as ArrowLink } from 'react-icons/bs'
+import { saveTasteIds, getSavedTasteIds } from "../../utils/localStorage";
+import { useMutation } from "@apollo/client";
+import { SAVE_TASTE } from "../../utils/mutations";
 
 const Rec = ({ results, loading }) => {
+  
+  //added saveTaste method
+  const [saveTaste] = useMutation(SAVE_TASTE);
+  
+  const [savedTasteIds, setSavedTasteIds] = useState(getSavedTasteIds());
+
+  useEffect(() => {
+    return () => saveTasteIds(savedTasteIds);
+  });
+
   if (loading) {
     return (
       <div className='loadingPage'>
@@ -26,14 +40,14 @@ const Rec = ({ results, loading }) => {
               
             <div className='artistBioWrapper'>
               <Card.Title>{result.resultIndex}. {result.name}</Card.Title>
-              <Card.Text>
-                {result.bio}
-              </Card.Text>
+                <Card.Text>
+                  {result.bio}
+                </Card.Text>
               <div className='cardLinks'>
                 <BsStar className="favoriteArtist" title='favorite artist' />
-                <a href={result.link} target="_blank" rel="noopener noreferrer" className='OpenLastFM' title="view artist on lastFM">
-                  <ArrowLink className='toLastFM' href={result.link} />
-                </a>
+                  <a href={result.link} target="_blank" rel="noopener noreferrer" className='OpenLastFM' title="view artist on lastFM">
+                    <ArrowLink className='toLastFM' href={result.link} />
+                  </a>
               </div>
             </div>
 
