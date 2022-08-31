@@ -9,9 +9,9 @@ export const getSavedTasteIds = () => {
   
   export const saveTasteIds = (artistId) => {
     if (artistId.length) {
-      localStorage.setItem('saved_tastes', JSON.stringify(artistId));
+      localStorage.setItem('saved_taste', JSON.stringify(artistId));
     } else {
-      localStorage.removeItem('saved_tastes');
+      localStorage.removeItem('saved_taste');
     }
   };
   
