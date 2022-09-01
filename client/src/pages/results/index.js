@@ -27,7 +27,7 @@ function Results() {
     useEffect(() => {
         const fetchResults = async (artist) => {
             
-            fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
+            fetch('https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
             .then((response) => {
                 setLoading(true)
                 return response.json();
@@ -35,7 +35,7 @@ function Results() {
             .then(async (data) => {
                 const artistArray = [];
                 for(var i=0; i < 25; i++){
-                    const res = await fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+data.similarartists.artist[i].name+'&api_key='+fmKey+'&format=json', {});
+                    const res = await fetch('https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+data.similarartists.artist[i].name+'&api_key='+fmKey+'&format=json', {});
                     
                     const artistData = await res.json();
                     const artistRecName = artistData.artist.name;
@@ -82,7 +82,7 @@ function Results() {
         
         const artist = inputRef.current.value;
         navigate('/results', {state: {artistName: artist}})
-        fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
+        fetch('https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=25&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
             .then((response) => {
                 setLoading(true)
                 return response.json();
@@ -90,7 +90,7 @@ function Results() {
             .then(async (data) => {
                 const artistArray = [];
                 for(var i=0; i < 25; i++){
-                    const res = await fetch('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+data.similarartists.artist[i].name+'&api_key='+fmKey+'&format=json', {});
+                    const res = await fetch('https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist='+data.similarartists.artist[i].name+'&api_key='+fmKey+'&format=json', {});
                     
                     const artistData = await res.json();
                     const artistRecName = artistData.artist.name;
