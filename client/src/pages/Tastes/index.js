@@ -8,15 +8,15 @@ import { REMOVE_TASTE } from '../../utils/mutations';
 import { BsStar, BsFillArrowUpRightSquareFill as ArrowLink } from 'react-icons/bs'
 
 const Tastes = () => {
-  // define query and mutation
+
   const { loading, data } =  useQuery(GET_ME)
   const userData = data?.me;
 
-  console.log(userData);
+  
 
   const [removeTaste] = useMutation(REMOVE_TASTE);
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+
   const handleDeleteTaste = async (artistId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -29,21 +29,20 @@ const Tastes = () => {
         variables: {artistId}
       });
 
-      // upon success, remove book's id from localStorage
+
       removeTasteId(artistId);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-
+  
   return (
 
-    <></>
+    <h1>{userData.tastes}</h1>
   );
 };
 /*
