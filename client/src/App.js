@@ -1,8 +1,8 @@
 import Header from "/components/Header"
-import Home from './pages/Home'
-import Results from './pages/Results';
-import Error from './pages/Error';
-import Tastes from './pages/Tastes';
+import Home from '/pages/Home'
+import Results from '/pages/Results';
+import Error from '/pages/Error';
+import Tastes from '/pages/Tastes';
 
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
