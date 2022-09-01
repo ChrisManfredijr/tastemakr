@@ -1,4 +1,4 @@
-import Header from "./components/Header"
+import Header from "/components/Header"
 import Home from './pages/Home'
 import Results from './pages/Results';
 import Error from './pages/Error';
