@@ -1,7 +1,7 @@
 import { useState,useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { BsHeadphones, BsStar, BsFillArrowUpRightSquareFill as ArrowLink } from 'react-icons/bs'
+import { BsFillArrowUpRightSquareFill as ArrowLink } from 'react-icons/bs'
 import { saveTasteIds, getSavedTasteIds } from "../../utils/localStorage";
 import { useMutation } from "@apollo/client";
 import { SAVE_TASTE } from "../../utils/mutations";
@@ -9,7 +9,7 @@ import Auth from '../../utils/auth';
 
 const Rec = ({ results, loading }) => {
   
-  //added saveTaste method
+ 
   const [saveTaste] = useMutation(SAVE_TASTE);
   const [savedTasteIds, setSavedTasteIds] = useState(getSavedTasteIds());
 

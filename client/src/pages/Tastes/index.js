@@ -41,12 +41,7 @@ const Tastes = () => {
   }
   console.log(userData.tastes)
   return (
-
-    <h1></h1>
-  );
-};
-/*
-userData.tastes.map((result, index) => (
+    userData.tastes.map((result, index) => (
       <Card key={index} className="resultCard" >
         <Card.Body className='resultBody'>
           
@@ -60,7 +55,9 @@ userData.tastes.map((result, index) => (
                 {result.bio}
               </Card.Text>
             <div className='cardLinks'>
-              <BsStar className="favoriteArtist" title='favorite artist' />
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteTaste(result.artistId)}>
+                    Remove Artist
+                  </Button>
              
                 <a href={result.link} target="_blank" rel="noopener noreferrer" className='OpenLastFM' title="view artist on lastFM">
                   <ArrowLink className='toLastFM' href={result.link} />
@@ -73,6 +70,10 @@ userData.tastes.map((result, index) => (
         </Card.Body>
       </Card>
     ))
+  );
+};
+/*
+
  
 
 <Jumbotron fluid className='text-light bg-dark'>

@@ -13,8 +13,8 @@ function Header() {
 
   return (
     <>
-    <Navbar collapseOnSelect expand="xxl" bg="dark" variant="dark" style={{margin:"0px"}}>
-      <Container fluid>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{margin:"0px"}}>
+      <Container >
         <Navbar.Brand as={Link} to='/'><BsHeadphones className='navLogo'/></Navbar.Brand>
           <Nav>  
             {Auth.loggedIn() ? (

@@ -10,6 +10,7 @@ import Results from './pages/results';
 import Error from './pages/Error';
 import Tastes from './pages/Tastes';
 
+
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -42,6 +43,7 @@ function App() {
           <Route path="*" element={<Error/>}/>
         </Routes>  
       </Router>
+   
     </div>
     </ApolloProvider>
     

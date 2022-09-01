@@ -49,6 +49,7 @@ function Results() {
 
                     //fetch image from audioDB
                     const res2 = await fetch("https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistRecName,{});
+                    
                     const artistImage = await res2.json();
                     const imageLink = artistImage.artists[0].strArtistThumb
                     
