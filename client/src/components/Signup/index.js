@@ -5,7 +5,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import Auth from '../../utils/auth';
 
 const SignupForm = () => {
-  // set initial form state
+
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
   // define Mutation for ADD_USER
   const [ addUser, { error }] = useMutation(ADD_USER);

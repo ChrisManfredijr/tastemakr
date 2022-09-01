@@ -195,14 +195,26 @@ html {
   text-decoration: none;
 }
 .submitAuth {
-  margin-left:90%;
-  margin-top: 20px;
+ margin-left:84%;
+ margin-top:10px;
  
 }
-.login > .nav-link:active {
-  background-color: red;
+.signup-modal {
+  margin-bottom: 50%;
+}
+.login:hover{
+  text-decoration: underline;
+}
+.signup:hover {
+  text-decoration: underline;
+}
+.loginheader {
+  font-style: italic;
 }
 
+.loginSignup {
+  justify-content: center;
+}
 @keyframes ellipsis {
   to {
     width: 20px;    

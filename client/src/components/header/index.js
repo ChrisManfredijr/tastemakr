@@ -36,19 +36,23 @@ function Header() {
     </Navbar>
 
     <Modal
-        size='lg'
+        size='md'
         show={showModal}
         onHide={() => setShowModal(false)}
-        aria-labelledby='signup-modal' >
+        aria-labelledby='signup-modal' 
+        className="signup-modal">
         
         <Tab.Container defaultActiveKey='login' >
-         <Modal.Header className='modal-header'closeButton >
-         <BsFillPersonFill className='accountPic'/>
-            <Modal.Title id='signup-modal'>
-            
-              <Nav variant='pills' className='pills'>
-             
-                <Nav.Item>
+         
+         <Modal.Header closeButton >
+           <h3 className="loginheader">login or create an account</h3>
+           </Modal.Header>
+           <BsFillPersonFill className='accountPic'/>
+           
+          <Modal.Body>
+            <Modal.Title id='signup-modal' >
+            <Nav className='loginSignup'>
+              <Nav.Item className="">
                   <Nav.Link eventKey='login' className='login' >Login</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
@@ -57,8 +61,6 @@ function Header() {
               </Nav>
             </Modal.Title>
             
-          </Modal.Header>
-          <Modal.Body>
             <Tab.Content>
               <Tab.Pane eventKey='login'>
                 <Login handleModalClose={() => setShowModal(false)} />
