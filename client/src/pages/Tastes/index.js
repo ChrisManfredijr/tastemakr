@@ -39,10 +39,10 @@ const Tastes = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-  
+  console.log(userData.tastes)
   return (
 
-    <h1>{userData.tastes}</h1>
+    <h1></h1>
   );
 };
 /*
