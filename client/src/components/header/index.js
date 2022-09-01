@@ -20,7 +20,7 @@ function Header() {
             {Auth.loggedIn() ? (
                 <>    
                   <NavDropdown title="Account" id="collasible-nav-dropdown">
-                    <NavDropdown.Item  href='/tastes'>My Acquired Tastes</NavDropdown.Item>
+                    <NavDropdown.Item  as={Link} to='/tastes'>My Acquired Tastes</NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item style={{color:"red"}}onClick={Auth.logout}>Logout
                     </NavDropdown.Item>
