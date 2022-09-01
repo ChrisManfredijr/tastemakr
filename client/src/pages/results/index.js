@@ -142,7 +142,7 @@ function Results() {
     //Change page 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    //change state
+   
     
     return (
         <div className="resultsPage">
