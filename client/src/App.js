@@ -4,9 +4,9 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import './App.css';
 import { setContext } from '@apollo/client/link/context'
-import Header from "./components/Header";
-import Home from './pages/Home';
-import Results from './pages/Results';
+import Header from "./components/header";
+import Home from './pages/home';
+import Results from './pages/results';
 import Error from './pages/Error';
 import Tastes from './pages/Tastes';
 
