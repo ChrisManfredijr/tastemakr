@@ -23,7 +23,7 @@ function Home() {
               
                 <h1 className='Title'>Tastemakr <BsHeadphones/></h1>
                 <h6 className='subTitle'>New music choices made easy</h6>
-
+                <form onSubmit={handleClick}>
                 <InputGroup className="searchArtist mb-3">
                     <Form.Control
                         ref={inputRef}
@@ -31,11 +31,11 @@ function Home() {
                         aria-label="enter an artist"
                         aria-describedby="basic-addon2"
                     />
-                    <Button variant="outline-secondary" id="button-addon2" onClick={handleClick}>
+                    <Button variant="outline-secondary" id="button-addon2" type="submit" onClick={handleClick}>
                         <BsSearch />
                     </Button>
-                    
                 </InputGroup>
+                </form>
             </div>
 
         </div>

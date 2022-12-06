@@ -148,7 +148,7 @@ function Results() {
                     <Button variant="outline-secondary" id="Search-button button-addon2" onClick= {handleClick}>
                         <BsSearch />
                     </Button>
-                </InputGroup>
+                </InputGroup>       
             </section>
                 <h3 className='resultsIntro'>If you like {artistName} then you'll probably enjoy</h3>
                 <div>
