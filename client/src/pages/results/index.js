@@ -46,18 +46,11 @@ function Results() {
                     const artistBio = artistBioArray[0] + "." + artistBioArray[1] + "." + artistBioArray[2] + "." + artistBioArray[3] + ".";
                     //gets link to lastfm
                     const link = artistData.artist.url;
-
-                    //fetch image from audioDB
-                    const res2 = await fetch("https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistRecName,{});
-                    
-                    const artistImage = await res2.json();
-                    const imageLink = artistImage.artists[0].strArtistThumb
-                    
+            
                     const artistObject = {
                         artist: artistRecName,
                         bio: artistBio,
                         link: link,
-                        image: imageLink,
                         artistId: mbid,
                         
 
@@ -104,19 +97,12 @@ function Results() {
                     //gets link to lastfm
                     const link = artistData.artist.url;
 
-                    //fetch image from audioDB
-                    const res2 = await fetch("https://theaudiodb.com/api/v1/json/2/search.php?s=" + artistRecName,{})
-
-                    const artistImage = await res2.json();
-
-
-                    const imageLink = artistImage.artists[0].strArtistThumb
+                  
                     
                     const artistObject = {
                         artist: artistRecName,
                         bio: artistBio,
                         link: link,
-                        image: imageLink,
                         artistId: mbid,
                         resultIndex: i+1,
 

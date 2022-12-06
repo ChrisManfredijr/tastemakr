@@ -63,7 +63,7 @@ const Rec = ({ results, loading }) => {
           <Card.Body className='resultBody'>
             
             <div className='artistImageWrapper'>
-              <img src={result.image} className="artistImage" alt={result.name}></img>
+              
             </div>
               
             <div className='artistBioWrapper'>
@@ -88,7 +88,7 @@ const Rec = ({ results, loading }) => {
                   )}
                   
               </div>
-            </div>
+            </div>``
 
 
 
