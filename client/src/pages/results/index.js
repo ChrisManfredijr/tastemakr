@@ -13,9 +13,7 @@ const fmKey = "2097d3a5f8da51f146d0e4e47efde651";
 function Results() {
     const inputRef = useRef(null);
     const {state} = useLocation();
-    
     const {artistName} = state;
-    
     const [results, setResults] =useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);

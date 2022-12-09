@@ -5,16 +5,46 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import { BsSearch, BsHeadphones } from 'react-icons/bs';
 import {Navigate, useNavigate} from "react-router-dom";
 import React from 'react';
-
+import { assertValidSDLExtension } from 'graphql/validation/validate';
+const fmKey = "2097d3a5f8da51f146d0e4e47efde651";
+const dbKey = "523532";
 
 function Home() {
     const navigate = useNavigate();
 
     const inputRef = useRef(null);
    
-    function handleClick() {
+    function handleClick(e) {
+        e.preventDefault();
         const artist = inputRef.current.value;
-        navigate('/results', {state: {artistName: artist}})
+
+        //LastFM API call
+        fetch('https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&limit=100&artist=' + artist + '&api_key=' + fmKey + '&format=json&autocorrect[1]', {})
+        .then((response) => {
+           return response.json();
+        })
+        .then(async (data) => {
+            //Loop through recommendend artists using last.fm data
+            for(var i=0; i < 25; i++){
+                //recommended artists bio
+                const res = await fetch('https://theaudiodb.com/api/v1/json/'+ dbKey + '/artist-mb.php?i=' + data.similarartists.artist[i].mbid, {});
+                const artistData = await res.json();
+                console.log(artistData);
+
+                //musicvideo
+                const res2 = await fetch('https://theaudiodb.com/api/v1/json/523532/mvid-mb.php?i=' + data.similarartists.artist[i].mbid, {});
+                const musicVideoData = await res2.json();
+                console.log(musicVideoData);
+                
+                if(musicVideoData.mvids === null || artistData.artists === null){
+                    console.log(musicVideoData + "test");
+                    console.log(artistData +  "test");
+                }
+            }
+
+        })
+        .catch(err => console.log(err));
+
     }
 
     return (
