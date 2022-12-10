@@ -15,7 +15,7 @@ function Header() {
     <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{margin:"0px"}}>
       <Container >
-        <Navbar.Brand as={Link} to='/'><BsHeadphones className='navLogo'/></Navbar.Brand>
+        <Navbar.Brand><BsHeadphones className='navLogo'/></Navbar.Brand>
           <Nav>  
             {Auth.loggedIn() ? (
                 <>    
