@@ -9,16 +9,15 @@ const tasteSchema = new Schema(
     bio: {
       type:String,
     },
-    link: {
-      type: String,
-    },
     image: {
       type: String,
     },
-    artistId: {
+    link: {
       type: String,
-      required: true
-    }
+    },
+    logo: {
+      type: String,
+    },
   },
 );
 

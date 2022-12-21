@@ -21,13 +21,17 @@ const Rec = ({ results, loading }) => {
   });
 
   const handleSaveTaste = async (result) => {
+    console.log(result);
+    
     const tasteToSave = result;
 
-
+    
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
+    
 
     if (!token) {
+      console.log("no token")
       return false;
     }
 
