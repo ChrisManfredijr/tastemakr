@@ -36,7 +36,6 @@ function Home() {
 
                 //Loop through recommendend artists using last.fm data
                 var limit = 25;
-                var resultNumber = 1;
                 for (var i = 0; i < limit; i++) {
                     //recommended artists bio
                     const res = await fetch('https://theaudiodb.com/api/v1/json/' + dbKey + '/artist-mb.php?i=' + data.similarartists.artist[i].mbid, {});
@@ -48,7 +47,6 @@ function Home() {
                         limit++;
                     } else {
                         const artistObject = {
-                            result: resultNumber,
                             artist: artistData.artists[0].strArtist,
                             bio: artistData.artists[0].strBiographyEN,
                             link: artistData.artists[0].strWebsite,
@@ -56,7 +54,7 @@ function Home() {
                             logo: artistData.artists[0].strArtistLogo,
 
                         }
-                        resultNumber++;
+    
                         artistArray.push(artistObject);
                     }
 

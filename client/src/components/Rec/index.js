@@ -12,6 +12,7 @@ const Rec = ({ results, loading }) => {
 
   const [saveTaste] = useMutation(SAVE_TASTE);
   const [savedTasteIds, setSavedTasteIds] = useState(getSavedTasteIds());
+  const [resultNumber, setResultNumber] = useState(1);
 
 
 
@@ -63,7 +64,7 @@ const Rec = ({ results, loading }) => {
   } else {
     return (
       results.map((result, index) => (
-        <Card key={index} className="resultCard" >
+       <Card key={index} className="resultCard" >
           <Card.Body className='resultBody'>
 
             <div className='artistImageWrapper'>

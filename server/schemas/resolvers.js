@@ -50,11 +50,11 @@ const resolvers = {
             }
            
         },
-        removeTaste: async (parent, { artistId }, context) => {
+        removeTaste: async (parent, { artist }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     {_id: context.user._id},
-                    { $pull: { tastes: {artistId } } },
+                    { $pull: { tastes: {artist } } },
                     { new: true }
                 )
                 return updatedUser;

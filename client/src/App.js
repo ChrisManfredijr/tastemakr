@@ -6,7 +6,6 @@ import './App.css';
 import { setContext } from '@apollo/client/link/context'
 import Header from "./components/header";
 import Home from './pages/home';
-import Results from './pages/results';
 import Error from './pages/Error';
 import Tastes from './pages/Tastes';
 
@@ -38,7 +37,6 @@ function App() {
         <Header/>
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/results" element={<Results/>}/> 
           <Route path='/tastes' element={<Tastes/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>  

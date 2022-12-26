@@ -1,3 +1,7 @@
+
+/* 
+//now located home component  
+
 import React, {useState, useEffect,useRef} from 'react';
 import Rec from '../../components/Rec'
 import Pagination from '../../components/Pagination'
@@ -159,3 +163,5 @@ function Results() {
 }
 
 export default Results
+
+*/

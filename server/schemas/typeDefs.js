@@ -5,10 +5,10 @@ const typeDefs = gql`
     type Taste {
         _id: ID
         artist: String
+        image: String
         bio: String
         link: String
-        image: String
-        artistId: String
+        logo: String
     }
 
     type User {
@@ -27,9 +27,9 @@ const typeDefs = gql`
     input tasteData {
         artist: String
         bio: String
-        link: String
         image: String
-        artistId: String
+        link: String
+        logo: String
 
     }
     type Auth {
@@ -41,7 +41,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         saveTaste(input: tasteData!): User
-        removeTaste(artistId: ID!): User
+        removeTaste(artist: ID!): User
     }
      
 
