@@ -42,7 +42,7 @@ const Tastes = () => {
     return <h2>LOADING...</h2>;
   }
   console.log(userData.tastes)
-  if(userData.tastes.length === 0){
+  if(userData.tastes.length !== 0){
     return (
       userData.tastes.map((result, index) => (
         <Card key={index} className="resultCard" >
