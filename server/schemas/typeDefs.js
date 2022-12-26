@@ -4,6 +4,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
     type Taste {
         _id: ID
+        artistId: String
         artist: String
         image: String
         bio: String
@@ -25,6 +26,7 @@ const typeDefs = gql`
 
    
     input tasteData {
+        artistId: String
         artist: String
         bio: String
         image: String
@@ -41,7 +43,7 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         saveTaste(input: tasteData!): User
-        removeTaste(artist: ID!): User
+        removeTaste(artistId: ID!): User
     }
      
 

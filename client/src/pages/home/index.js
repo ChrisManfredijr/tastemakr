@@ -41,12 +41,13 @@ function Home() {
                     const res = await fetch('https://theaudiodb.com/api/v1/json/' + dbKey + '/artist-mb.php?i=' + data.similarartists.artist[i].mbid, {});
 
                     const artistData = await res.json();
-
+              
                     //if not results for a given artist, go to next one
                     if (artistData.artists === null) {
                         limit++;
                     } else {
                         const artistObject = {
+                            artistId: artistData.artists[0].idArtist,
                             artist: artistData.artists[0].strArtist,
                             bio: artistData.artists[0].strBiographyEN,
                             link: artistData.artists[0].strWebsite,
@@ -54,7 +55,7 @@ function Home() {
                             logo: artistData.artists[0].strArtistLogo,
 
                         }
-    
+                        console.log(artistObject);
                         artistArray.push(artistObject);
                     }
 

@@ -32,6 +32,7 @@ export const SAVE_TASTE = gql`
       email
       tastes {
         _id
+        artistId
         artist
         bio
         image
@@ -43,14 +44,15 @@ export const SAVE_TASTE = gql`
 `;
 
 export const REMOVE_TASTE = gql`
-  mutation Mutation($artist: ID!) {
-    removeTaste(artist: $artist) {
+  mutation Mutation($artistId: ID!) {
+    removeTaste(artistId: $artistId) {
       _id
       username
       email
       tasteCount
       tastes {
         _id
+        artistId
         artist
         bio
         image

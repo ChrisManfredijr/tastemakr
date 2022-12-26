@@ -17,7 +17,7 @@ const Tastes = () => {
   const [removeTaste] = useMutation(REMOVE_TASTE);
 
 
-  const handleDeleteTaste = async (artist) => {
+  const handleDeleteTaste = async (artistId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -26,11 +26,11 @@ const Tastes = () => {
 
     try {
       await removeTaste({
-        variables: {artist}
+        variables: {artistId}
       });
 
 
-      removeTasteId(artist);
+      removeTasteId(artistId);
     } catch (err) {
       console.error(err);
     }
@@ -46,7 +46,7 @@ const Tastes = () => {
         <Card.Body className='resultBody'>
           
           <div className='artistImageWrapper'>
-            <img src={result.image} className="artistImage" alt={result.name}></img>
+            <img src={result.image} className="artistImage" alt={result.artist}></img>
           </div>
             
           <div className='artistBioWrapper'>
@@ -55,7 +55,7 @@ const Tastes = () => {
                 {result.bio}
               </Card.Text>
             <div className='cardLinks'>
-                    <Button className='btn-block btn-danger' onClick={() => handleDeleteTaste(result.artist)}>
+                    <Button className='btn-block btn-danger' onClick={() => handleDeleteTaste(result.artistId)}>
                     Remove Artist
                   </Button>
              

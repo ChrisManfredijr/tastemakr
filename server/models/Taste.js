@@ -3,6 +3,10 @@ const { Schema} = require('mongoose');
 
 const tasteSchema = new Schema(
   {
+    artistId: {
+      type: String,
+      unique: true,
+    },
     artist: {
       type:String,
     },

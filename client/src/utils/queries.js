@@ -10,6 +10,7 @@ export const GET_ME = gql`
       tasteCount
       tastes {
         _id
+        artistId
         artist
         bio
         image
