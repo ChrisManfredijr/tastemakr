@@ -7,11 +7,11 @@ import { BsSearch, BsHeadphones } from 'react-icons/bs';
 import React from 'react';
 import Rec from '../../components/Rec'
 import Pagination from '../../components/Pagination'
-const fmKey = "2097d3a5f8da51f146d0e4e47efde651";
-const dbKey = "523532";
+const fmKey = process.env.REACT_APP_FM_KEY;
+const dbKey = process.env.REACT_APP_DB_KEY;
+
 
 function Home() {
-
     const [loading, setLoading] = useState(false);
     const [results, setResults] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
